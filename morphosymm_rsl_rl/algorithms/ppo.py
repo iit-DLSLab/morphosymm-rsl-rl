@@ -23,19 +23,6 @@ class PPO(RslRlPPO):
     loss (``symmetry_cfg``) -- is inherited unchanged from :class:`rsl_rl.algorithms.PPO`.
     """
 
-    _schedule_switch_iteration: int | None = None
-    """Iteration at which to switch from a fixed to an adaptive learning-rate schedule (``None`` disables this)."""
-
-    _elapsed_iterations: int = 0
-    """Number of completed calls to :meth:`update`, used to trigger the schedule switch above."""
-
-    def update(self) -> dict[str, float]:
-        """Run PPO's update, switching the LR schedule from fixed to adaptive at a configured iteration."""
-        if self._elapsed_iterations == self._schedule_switch_iteration:
-            self.schedule = "adaptive"
-        self._elapsed_iterations += 1
-        return super().update()
-
     @staticmethod
     def construct_algorithm(obs: TensorDict, env: VecEnv, cfg: dict, device: str) -> PPO:
         """Construct PPO using SymmModel actor and critic networks."""
@@ -59,7 +46,6 @@ class PPO(RslRlPPO):
         # shared by the actor and the critic; each SymmModel instance re-derives its own escnn group from it.
         symm_cfg = cfg["morphologycal_symmetries_cfg"].copy()
         symm_cfg.pop("class_name", None)
-        schedule_switch_iteration = symm_cfg.pop("schedule_fixed_to_adaptive_switch", None)
 
         # Initialize the actor
         cfg["actor"].pop("class_name", None)
@@ -80,7 +66,6 @@ class PPO(RslRlPPO):
 
         # Initialize the algorithm
         alg: PPO = alg_class(actor, critic, storage, device=device, **cfg["algorithm"], multi_gpu_cfg=cfg["multi_gpu"])
-        alg._schedule_switch_iteration = schedule_switch_iteration
 
         # Compile the algorithm's models if requested
         alg.compile(cfg.get("torch_compile_mode"))

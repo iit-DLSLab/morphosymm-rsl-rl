@@ -34,9 +34,6 @@ class MorphologycalSymmetriesCfg:
     symmetric_initialization = True
     """Whether to project the actor/critic initial weights onto the symmetry-equivariant subspace."""
 
-    schedule_fixed_to_adaptive_switch = None
-    """Training iteration at which to switch the PPO schedule from 'fixed' to 'adaptive'. `None` disables this."""
-
 
 # Actor OBS
 history_length = 5
