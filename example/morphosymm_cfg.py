@@ -25,6 +25,18 @@ class MorphologycalSymmetriesCfg:
     robot_name = None
     """The name of the robot to use inside Morphosymm."""
 
+    state_dependent_std = False
+    """Whether the actor emits its action covariance directly, instead of learning a fixed one."""
+
+    small_init_output = True
+    """Whether to start the actor mean and the critic value with small (near-zero) initial outputs."""
+
+    symmetric_initialization = True
+    """Whether to project the actor/critic initial weights onto the symmetry-equivariant subspace."""
+
+    schedule_fixed_to_adaptive_switch = None
+    """Training iteration at which to switch the PPO schedule from 'fixed' to 'adaptive'. `None` disables this."""
+
 
 # Actor OBS
 history_length = 5

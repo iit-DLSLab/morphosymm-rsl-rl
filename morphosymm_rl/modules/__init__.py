@@ -5,10 +5,11 @@
 
 """Definitions for neural-network components for RL-agents."""
 
-from .ac_symm import ActorCriticSymm
+from .ac_symm import EquivGaussianDistribution, SymmModel
 from .normalizer import EquivEmpiricalNormalization
 
 __all__ = [
-    "ActorCriticSymm",
     "EquivEmpiricalNormalization",
+    "EquivGaussianDistribution",
+    "SymmModel",
 ]
