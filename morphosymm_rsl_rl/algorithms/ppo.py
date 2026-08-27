@@ -13,7 +13,7 @@ from rsl_rl.extensions import resolve_rnd_config, resolve_symmetry_config
 from rsl_rl.storage import RolloutStorage
 from rsl_rl.utils import resolve_callable, resolve_obs_groups
 
-from morphosymm_rl.modules import SymmModel
+from morphosymm_rsl_rl.modules import SymmModel
 
 
 class PPO(RslRlPPO):

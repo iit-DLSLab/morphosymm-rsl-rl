@@ -18,7 +18,7 @@ from symm_learning.nn import EquivMultivariateNormal
 from tensordict import TensorDict
 from torch.distributions import Normal
 
-from morphosymm_rl.symm_utils import configure_observation_space_representations
+from morphosymm_rsl_rl.symm_utils import configure_observation_space_representations
 
 
 class _EquivariantEmpiricalNormalization(EmpiricalNormalization):

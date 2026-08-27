@@ -77,7 +77,7 @@ import isaaclab_tasks  # noqa: F401
 from isaaclab_tasks.utils import get_checkpoint_path
 from isaaclab_tasks.utils.hydra import hydra_task_config
 
-from morphosymm_rl.runners.symm_on_policy_runner import SymmOnPolicyRunner
+from morphosymm_rsl_rl.runners.symm_on_policy_runner import SymmOnPolicyRunner
 # Import extensions to set up environment tasks
 import mixture_of_expert_recovery_isaaclab.tasks  # noqa: F401
 

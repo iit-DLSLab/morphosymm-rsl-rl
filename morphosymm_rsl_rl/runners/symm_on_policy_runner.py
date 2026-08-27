@@ -8,8 +8,8 @@ from __future__ import annotations
 from rsl_rl.env import VecEnv
 from rsl_rl.runners import OnPolicyRunner
 
-from morphosymm_rl.algorithms.ppo import PPO as SymmPPO
-from morphosymm_rl.algorithms.ppo_symm_data_augment import PPOSymmDataAugmented
+from morphosymm_rsl_rl.algorithms.ppo import PPO as SymmPPO
+from morphosymm_rsl_rl.algorithms.ppo_symm_data_augment import PPOSymmDataAugmented
 
 
 class SymmOnPolicyRunner(OnPolicyRunner):

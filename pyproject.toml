@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "morphosymm-rl"
+name = "morphosymm-rsl-rl"
 version = "0.1.2"
 
 description = "Extension of RSL-RL for using Morphological Symmetries in IsaacLab"
@@ -110,7 +110,7 @@ docstring-code-line-length = "dynamic"
 # Pypi build configuration._________________________________________________________________________
 [tool.hatch.build] # ===============================================================================
 include = [
-  "morphosymm_rl/**", # Only include necessary package files
+  "morphosymm_rsl_rl/**", # Only include necessary package files
 ]
 exclude = [
   ".github/**",     # Exclude GitHub workflows

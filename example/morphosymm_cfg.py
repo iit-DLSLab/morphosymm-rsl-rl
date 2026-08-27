@@ -5,7 +5,7 @@ from dataclasses import MISSING
 
 @configclass
 class MorphologycalSymmetriesCfg:
-    """Configuration for using morphosymm-rl."""
+    """Configuration for using morphosymm-rsl-rl."""
 
     class_name: str = "MorphologycalSymmetries"
     """The class name."""

@@ -11,7 +11,7 @@ from tensordict import TensorDict
 from rsl_rl.env import VecEnv
 from rsl_rl.storage import RolloutStorage
 
-from morphosymm_rl.algorithms.ppo import PPO
+from morphosymm_rsl_rl.algorithms.ppo import PPO
 
 
 class PPOSymmDataAugmented(PPO):
@@ -21,9 +21,9 @@ class PPOSymmDataAugmented(PPO):
     same returns/values for every replica), this class augments the rollout *as it is collected*: every
     observation, action, and distribution parameter is transformed by each non-identity group element and stored
     as its own transition, so ``compute_returns`` bootstraps proper GAE targets for every replica. The actor's
-    escnn group ``G`` (shared by construction with the critic, see :class:`~morphosymm_rl.modules.SymmModel`)
+    escnn group ``G`` (shared by construction with the critic, see :class:`~morphosymm_rsl_rl.modules.SymmModel`)
     drives every transform; only the storage sizing, transition augmentation, and return bootstrap need overriding,
-    the loss computation in ``update()`` is inherited unchanged from :class:`~morphosymm_rl.algorithms.ppo.PPO`.
+    the loss computation in ``update()`` is inherited unchanged from :class:`~morphosymm_rsl_rl.algorithms.ppo.PPO`.
     """
 
     @staticmethod

@@ -115,7 +115,7 @@ torch.backends.cudnn.allow_tf32 = True
 torch.backends.cudnn.deterministic = False
 torch.backends.cudnn.benchmark = False
 
-from morphosymm_rl.runners.symm_on_policy_runner import SymmOnPolicyRunner
+from morphosymm_rsl_rl.runners.symm_on_policy_runner import SymmOnPolicyRunner
 
 
 @hydra_task_config(args_cli.task, args_cli.agent)
