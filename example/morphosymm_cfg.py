@@ -34,6 +34,10 @@ class MorphologycalSymmetriesCfg:
     symmetric_initialization = True
     """Whether to project the actor/critic initial weights onto the symmetry-equivariant subspace."""
 
+    use_data_augmentation = False
+    """Whether to augment the rollout storage with every symmetry-group replica of each collected transition
+    (selects PPOSymmDataAugmented). If False, uses the plain equivariant PPO with no augmentation."""
+
 
 # Actor OBS
 history_length = 5

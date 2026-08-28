@@ -18,6 +18,14 @@ Features:
 Install this package with:
 
 ```bash
+conda install -c conda-forge gfortran
+
+or
+
+sudo apt install gfortran
+
+then
+
 pip install -e .
 ```
 

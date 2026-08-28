@@ -46,6 +46,7 @@ class PPO(RslRlPPO):
         # shared by the actor and the critic; each SymmModel instance re-derives its own escnn group from it.
         symm_cfg = cfg["morphologycal_symmetries_cfg"].copy()
         symm_cfg.pop("class_name", None)
+        symm_cfg.pop("use_data_augmentation", None)  # consumed by SymmOnPolicyRunner, not a SymmModel kwarg
 
         # Initialize the actor
         cfg["actor"].pop("class_name", None)

@@ -28,7 +28,6 @@ class PPORunnerCfg(RslRlOnPolicyRunnerCfg):
         obs_normalization=False,
     )
     algorithm = RslRlPpoAlgorithmCfg(
-        class_name="PPOSymmDataAugmented",  # PPO, PPOSymmDataAugmented
         value_loss_coef=1.0,
         use_clipped_value_loss=True,
         clip_param=0.2,

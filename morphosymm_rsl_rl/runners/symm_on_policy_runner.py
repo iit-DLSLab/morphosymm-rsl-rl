@@ -13,18 +13,18 @@ from morphosymm_rsl_rl.algorithms.ppo_symm_data_augment import PPOSymmDataAugmen
 
 
 class SymmOnPolicyRunner(OnPolicyRunner):
-    """RSL-RL on-policy runner selecting a morphologically-symmetric PPO implementation."""
+    """RSL-RL on-policy runner selecting a morphologically-symmetric PPO implementation.
 
-    _ALGORITHM_CLASSES = {
-        "PPO": SymmPPO,
-        "PPOSymmDataAugmented": PPOSymmDataAugmented,
-    }
+    The choice between the plain equivariant PPO and its transition-augmented variant is read from
+    ``morphologycal_symmetries_cfg.use_data_augmentation`` -- ``algorithm.class_name`` is overwritten
+    unconditionally and does not need to be set by the caller.
+    """
 
     def __init__(self, env: VecEnv, train_cfg: dict, log_dir: str | None = None, device: str = "cpu") -> None:
-        """Use the local PPO variants for symmetric configs, then delegate all runner behavior to RSL-RL."""
-        # Select the symmetry-aware algorithm while keeping the standard RSL-RL configuration shape
-        class_name = train_cfg["algorithm"]["class_name"]
-        train_cfg["algorithm"]["class_name"] = self._ALGORITHM_CLASSES.get(class_name, class_name)
+        """Select the symmetry-aware PPO variant, then delegate all runner behavior to RSL-RL."""
+        symm_cfg = train_cfg.get("morphologycal_symmetries_cfg") or {}
+        use_data_augmentation = symm_cfg.get("use_data_augmentation", False)
+        train_cfg["algorithm"]["class_name"] = PPOSymmDataAugmented if use_data_augmentation else SymmPPO
 
         # Delegate construction, learning, logging, checkpoints, and exports to the upstream runner
         super().__init__(env, train_cfg, log_dir, device)
