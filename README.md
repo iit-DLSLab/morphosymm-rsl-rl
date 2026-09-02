@@ -1,5 +1,5 @@
 <div style="text-align: left;">
-  <img src="https://img.shields.io/badge/IsaacLab%20-v2.3.2-green" alt="IsaacLab v2.3.0" style="margin-bottom: 1px;">
+  <img src="https://img.shields.io/badge/IsaacLab%20-v3.0.0-green" alt="IsaacLab v3.0.0" style="margin-bottom: 1px;">
   <img src="https://img.shields.io/badge/rsl_rl%20-v5.4.2-brown" alt="rsl-rl v5.4.2" style="margin-bottom: 1px;">
 </div>
 
