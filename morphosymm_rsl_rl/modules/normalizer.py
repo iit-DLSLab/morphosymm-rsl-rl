@@ -3,7 +3,7 @@ from __future__ import annotations
 import symm_learning.stats as symm_stats
 import torch
 from escnn.group import Representation
-from rsl_rl.networks import EmpiricalNormalization
+from rsl_rl.modules import EmpiricalNormalization
 
 
 class EquivEmpiricalNormalization(EmpiricalNormalization):

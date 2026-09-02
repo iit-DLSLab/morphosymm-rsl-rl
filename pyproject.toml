@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "morphosymm-rl"
+name = "morphosymm-rsl-rl"
 version = "0.1.2"
 
 description = "Extension of RSL-RL for using Morphological Symmetries in IsaacLab"
@@ -21,7 +21,8 @@ maintainers = [
 dependencies = [
   "torch",                       # Isaacsim requested version https://isaac-sim.github.io/IsaacLab/main/source/setup/installation/pip_installation.html
   "torchvision",                # Isaacsim requested version https://isaac-sim.github.io/IsaacLab/main/source/setup/installation/pip_installation.html
-  "rsl-rl-lib==3.3.0",
+  "rsl-rl-lib==5.4.2",
+  "lie_learn==0.0.2",
   "morpho-symm[pin]",                   # We require pinnochio for custom joint orderings. 
   "symm-learning==0.2.6"
   ]
@@ -110,7 +111,7 @@ docstring-code-line-length = "dynamic"
 # Pypi build configuration._________________________________________________________________________
 [tool.hatch.build] # ===============================================================================
 include = [
-  "morphosymm_rl/**", # Only include necessary package files
+  "morphosymm_rsl_rl/**", # Only include necessary package files
 ]
 exclude = [
   ".github/**",     # Exclude GitHub workflows

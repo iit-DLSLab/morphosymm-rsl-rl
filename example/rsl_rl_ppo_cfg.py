@@ -5,12 +5,8 @@
 
 
 from isaaclab.utils import configclass
-from isaaclab_rl.rsl_rl import RslRlOnPolicyRunnerCfg, RslRlPpoActorCriticCfg, RslRlPpoAlgorithmCfg
+from isaaclab_rl.rsl_rl import RslRlMLPModelCfg, RslRlOnPolicyRunnerCfg, RslRlPpoAlgorithmCfg
 
-from pathlib import Path
-from dataclasses import MISSING
-
-from copy import deepcopy
 from . import morphosymm_cfg
 
 
@@ -20,16 +16,18 @@ class PPORunnerCfg(RslRlOnPolicyRunnerCfg):
     max_iterations = 2500
     save_interval = 50
     experiment_name = "flat_direct"
-    empirical_normalization = False
-    policy = RslRlPpoActorCriticCfg(
-        class_name="ActorCritic", #ActorCritic, ActorCriticRecurrent, ActorCriticSymm
-        init_noise_std=1.0,
-        actor_hidden_dims=[128, 128, 128],
-        critic_hidden_dims=[128, 128, 128],
+    actor = RslRlMLPModelCfg(
+        hidden_dims=[128, 128, 128],
         activation="elu",
+        obs_normalization=False,
+        distribution_cfg=RslRlMLPModelCfg.GaussianDistributionCfg(init_std=1.0),
+    )
+    critic = RslRlMLPModelCfg(
+        hidden_dims=[128, 128, 128],
+        activation="elu",
+        obs_normalization=False,
     )
     algorithm = RslRlPpoAlgorithmCfg(
-        class_name="PPOSymmDataAugmented", #PPO, PPOSymmDataAugmented
         value_loss_coef=1.0,
         use_clipped_value_loss=True,
         clip_param=0.2,
@@ -37,7 +35,7 @@ class PPORunnerCfg(RslRlOnPolicyRunnerCfg):
         num_learning_epochs=5,
         num_mini_batches=4,
         learning_rate=1.0e-3,
-        schedule="adaptive", #fixed, adaptive
+        schedule="adaptive",  # fixed, adaptive
         gamma=0.99,
         lam=0.95,
         desired_kl=0.01,

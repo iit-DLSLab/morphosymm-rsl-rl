@@ -1,11 +1,11 @@
 <div style="text-align: left;">
   <img src="https://img.shields.io/badge/IsaacLab%20-v2.3.2-green" alt="IsaacLab v2.3.0" style="margin-bottom: 1px;">
-  <img src="https://img.shields.io/badge/rsl_rl%20-v3.3.0-brown" alt="rsl-rl v3.3.0" style="margin-bottom: 1px;">
+  <img src="https://img.shields.io/badge/rsl_rl%20-v5.4.2-brown" alt="rsl-rl v5.4.2" style="margin-bottom: 1px;">
 </div>
 
 ## Overview
 
-morphosymm-rl is a reinforcement learning library for IsaacLab that extends the Proximal Policy Optimization (PPO) implementation of [RSL-RL](https://github.com/leggedrobotics/rsl_rl) with [Morphological Symmetries](https://arxiv.org/abs/2402.15552). 
+morphosymm-rsl-rl is a reinforcement learning library for IsaacLab that extends the Proximal Policy Optimization (PPO) implementation of [RSL-RL](https://github.com/leggedrobotics/rsl_rl) with [Morphological Symmetries](https://arxiv.org/abs/2402.15552). 
 
 Features:
 
@@ -18,12 +18,20 @@ Features:
 Install this package with:
 
 ```bash
+conda install -c conda-forge gfortran
+
+or
+
+sudo apt install gfortran
+
+then
+
 pip install -e .
 ```
 
 ## How to use
 
-See [here](https://github.com/iit-DLSLab/morphosymm-rl/blob/main/README_how_to.md).
+See [here](https://github.com/iit-DLSLab/morphosymm-rsl-rl/blob/main/README_how_to.md).
 
 ## Citing this work
 

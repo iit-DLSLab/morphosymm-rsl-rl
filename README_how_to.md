@@ -1,4 +1,4 @@
-# How to Use morphosymm-rl
+# How to Use morphosymm-rsl-rl
 
 This guide explains what is inside this repository and how to wire it into an IsaacLab/RSL-RL training setup. The short version is:
 
@@ -7,7 +7,7 @@ This guide explains what is inside this repository and how to wire it into an Is
 3. Add a `morphologycal_symmetries_cfg` block to your training config.
 4. Choose a `robot_name`, `joints_order`, observation names, and action names that match your IsaacLab environment exactly.
 
-The key idea is that `morphosymm-rl` does not define the robot symmetries itself. It asks the `morpho_symm` package for the robot's symmetry group and its representations, then uses those representations to augment PPO data or build equivariant/invariant neural networks.
+The key idea is that `morphosymm-rsl-rl` does not define the robot symmetries itself. It asks the `morpho_symm` package for the robot's symmetry group and its representations, then uses those representations to augment PPO data or build equivariant/invariant neural networks.
 
 
 ## Minimal Config Skeleton to add in your isaaclab!
@@ -18,7 +18,7 @@ See in the folder example!
 ## Repository Layout
 
 ```text
-morphosymm_rl/
+morphosymm_rsl_rl/
   algorithms/
     ppo.py                       # Local PPO fork with RSL-RL-style symmetry hooks.
     ppo_symm_data_augment.py     # PPO variant that augments rollouts with morphological symmetries.
