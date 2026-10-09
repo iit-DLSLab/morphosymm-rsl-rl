@@ -22,10 +22,19 @@ dependencies = [
   "torch",                       # Isaacsim requested version https://isaac-sim.github.io/IsaacLab/main/source/setup/installation/pip_installation.html
   "torchvision",                # Isaacsim requested version https://isaac-sim.github.io/IsaacLab/main/source/setup/installation/pip_installation.html
   "rsl-rl-lib==5.4.2",
-  "lie_learn==0.0.2",
-  "morpho-symm[pin]",                   # We require pinnochio for custom joint orderings. 
+  # lie_learn 0.0.2 is not on PyPI (only 0.0.1.post1, built for numpy 1). This upstream commit builds against numpy 2
+  # and ships the SO3 J-matrix .npy files.
+  "lie_learn @ git+https://github.com/AMLab-Amsterdam/lie_learn@edf012f5f60af320175d2e6269db78b984b5bfc3",
+  # We require pinocchio for custom joint orderings. The morpho-symm[pin] extra pins pin<3, which downgrades
+  # cmeel-boost and breaks the pin>=3 stack (libpinocchio, coal) installed by IsaacLab, so its deps are listed here.
+  "morpho-symm",
+  "pin>=3.0",
+  "pybullet",
   "symm-learning==0.2.6"
   ]
+
+[tool.hatch.metadata]
+allow-direct-references = true   # Needed for the lie_learn git dependency
 
 # Optional dependencies __________________________________________________________________________________________
 [project.optional-dependencies]
